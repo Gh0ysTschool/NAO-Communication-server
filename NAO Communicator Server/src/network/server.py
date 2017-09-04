@@ -1,13 +1,10 @@
-'''
-Created on 07.09.2012
 
-@author: hannes
-'''
 import socket
 import dataCommands
 import dataJoints
 import sys
 import traceback
+import json
 from naoqi import ALProxy
 from settings.Settings import Settings
 from time import time
@@ -74,7 +71,7 @@ class NAOServer(object):
 		self.__audioProxy = ALProxy("ALAudioDevice", Settings.naoHostName, Settings.naoPort)
 		self.__ttsProxy = ALProxy("ALTextToSpeech", Settings.naoHostName, Settings.naoPort)
 		self.__playerProxy = ALProxy("ALAudioPlayer", Settings.naoHostName, Settings.naoPort)
-		
+		self.__behaviorProxy = ALProxy("ALBehaviorManager", Settings.naoHostName, Settings.naoPort)
 		self.__robotName = self.__sysProxy.robotName()
 		self.__speechLanguagesList = self.__ttsProxy.getAvailableLanguages()
 		self.__speechVoicesList = self.__ttsProxy.getAvailableVoices()
@@ -143,7 +140,7 @@ class NAOServer(object):
 
 			if ret and len(ret) > 1:
 				try:
-					data = eval(ret[0])
+					data = json.loads(ret[0])
 				except:
 					data = {}
 					
@@ -158,6 +155,7 @@ class NAOServer(object):
 		'''
 		Creates data response package
 		'''
+
 		
 		self.__audioDataLock.acquire()
 		self.__stiffnessDataLock.acquire()
@@ -171,7 +169,8 @@ class NAOServer(object):
 			'lifeState': self.__lifeProxy.getState() if "lifeState" in self.__requiredData else "disabled",
 			'stiffnessData': self.__stiffnessData,
 			'audioData': self.__audioData,
-			'customMemoryEvents': Settings.memoryCustomEvents }
+			'customMemoryEvents': Settings.memoryCustomEvents,
+			'behaviors': self.__behaviorList}
 		
 		self.__audioDataLock.release()
 		self.__stiffnessDataLock.release()
@@ -202,6 +201,8 @@ class NAOServer(object):
 			self.__audioDataLock.acquire()
 			self.__audioData = self.__createAudioDatapackage()
 			self.__audioDataLock.release()
+
+			self.__behaviorList = self.__behaviorProxy.getInstalledBehaviors()
 			
 			self.__stiffnessDataLock.acquire()
 			self.__stiffnessData = self.__createStiffnessDatapackage()

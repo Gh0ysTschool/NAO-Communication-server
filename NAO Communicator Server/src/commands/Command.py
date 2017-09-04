@@ -1,14 +1,10 @@
-'''
-Created on 07.09.2012
 
-@author: hannes
-'''
 from commands.usrcommands import * 			# @UnusedWildImport
 from thread import start_new_thread
 
 class NAOCommand(object):
 	'''
-	Main command clas
+	Main command class
 	'''
 	lst = []
 	
@@ -44,6 +40,7 @@ class NAOCommand(object):
 		NAOCommand.lst.append( cmdStandUp.cmdStandUp() )
 		NAOCommand.lst.append( cmdSitDown.cmdSitDown() )
 		NAOCommand.lst.append( cmdVelocityWalk.cmdVelocityWalk() )
+		NAOCommand.lst.append( cmdStopMove.cmdStopMove() )
 		
 		NAOCommand.lst.append( ledAngry.ledAngry() )
 		NAOCommand.lst.append( ledBlink.ledBlink() )
@@ -65,7 +62,7 @@ class NAOCommand(object):
 	@staticmethod
 	def resolveCmd(data, server):
 		'''
-		Resolves recieved data in form of [ command, [argument1, argument2, ...] ]
+		Resolves recieved data in form of { 'command':'EXMAPLE_COMMANDS', 'commandsArguments':[argument1, argument2, ...] }
 		'''
 		
 		# go through commands list ans search for command

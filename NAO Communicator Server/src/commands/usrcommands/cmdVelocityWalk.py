@@ -1,8 +1,4 @@
-'''
-Created on 11.08.2013
 
-@author: hannes
-'''
 from naoqi import ALProxy
 from settings.Settings import Settings
 
@@ -20,7 +16,7 @@ class cmdVelocityWalk(object):
     def exe(self, args=None, addr=None):
         
         # check arguments
-        if len(args) != 5:
+        if len(args) < 5:
             print "argument error", args
             return False
         

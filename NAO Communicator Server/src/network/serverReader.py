@@ -1,9 +1,5 @@
-'''
-Created on 13.08.2013
-
-@author: hannes
-'''
 import dataCommands
+import json
 from network.server import NAOServer
 from commands.Command import NAOCommand
 
@@ -49,7 +45,7 @@ class ServerReader(object):
                         try:
                                 
                             # try to interprete as one command
-                            data = eval( data )
+                            data = json.loads( data )
                             self.__handleData(data, addr)
                             
                         except:
@@ -66,7 +62,7 @@ class ServerReader(object):
                                      
                                 # handle command
                                 try:
-                                    d = eval( str(d) )
+                                    d = json.loads( str(d) )
                                     self.__handleData(d, addr)
                                 except:
                                     self.__server.close(True)  
