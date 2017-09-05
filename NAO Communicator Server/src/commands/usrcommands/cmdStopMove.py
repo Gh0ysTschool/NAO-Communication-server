@@ -1,7 +1,7 @@
 from naoqi import ALProxy
 from settings.Settings import Settings
 
-class cmdVelocityWalk(object):
+class cmdStopMove(object):
     '''
     classdocs
     '''

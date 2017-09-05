@@ -1,8 +1,4 @@
-'''
-Created on 06.01.2013
 
-@author: hannes
-'''
 from naoqi import ALProxy
 from settings.Settings import Settings
 

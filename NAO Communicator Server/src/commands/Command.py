@@ -41,6 +41,7 @@ class NAOCommand(object):
 		NAOCommand.lst.append( cmdSitDown.cmdSitDown() )
 		NAOCommand.lst.append( cmdVelocityWalk.cmdVelocityWalk() )
 		NAOCommand.lst.append( cmdStopMove.cmdStopMove() )
+		NAOCommand.lst.append( cmdExecuteBehavior.cmdExecuteBehavior() )
 		
 		NAOCommand.lst.append( ledAngry.ledAngry() )
 		NAOCommand.lst.append( ledBlink.ledBlink() )

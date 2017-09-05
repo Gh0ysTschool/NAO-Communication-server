@@ -32,7 +32,7 @@ class NAOServer(object):
 	__audioProxy = None
 	__ttsProxy = None
 	__playerProxy = None
-	
+	__behaviorList = None
 	__robotName = "Nao"
 	__speechLanguagesList = []
 	__speechVoicesList = []

@@ -1,8 +1,4 @@
-'''
-Created on 07.09.2012
 
-@author: hannes
-'''
 import os, sys
 from time import sleep
 

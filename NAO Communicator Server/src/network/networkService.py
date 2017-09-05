@@ -1,8 +1,4 @@
-'''
-Created on 15.07.2014
 
-@author: hannes
-'''
 from signal import SIGTERM
 from os import killpg, setsid
 from subprocess import Popen, PIPE

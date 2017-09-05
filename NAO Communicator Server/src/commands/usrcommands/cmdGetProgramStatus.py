@@ -1,8 +1,4 @@
-'''
-Created on 07.10.2014
 
-@author: hannes
-'''
 from cmdPlayProgram import cmdPlayProgram
 
 class cmdGetProgramStatus(object):

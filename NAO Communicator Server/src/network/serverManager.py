@@ -1,8 +1,4 @@
-'''
-Created on 13.08.2013
 
-@author: hannes
-'''
 from fcntl import ioctl
 from array import array
 from struct import unpack, pack

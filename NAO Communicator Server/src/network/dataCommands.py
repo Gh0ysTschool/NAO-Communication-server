@@ -1,8 +1,4 @@
-'''
-Created on 26.08.2014
 
-@author: hannes
-'''
 
 SYS_GET_INFO = "SYS_GET_INFO"
 SYS_SEND_INFO="SYS_SEND_INFO"

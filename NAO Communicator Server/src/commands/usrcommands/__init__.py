@@ -32,5 +32,7 @@ __all__ = [
            "cmdMemoryEventRemove",
            "cmdPlayProgram",
            "cmdStopProgram",
-           "cmdGetProgramStatus"
+           "cmdGetProgramStatus",
+           "cmdStopMove",
+           "cmdExecuteBehavior"
            ]
